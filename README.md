@@ -1,4 +1,4 @@
-# Data Science Repository
+# Data Science Adventure
 
 Welcome to the Data Science repository! This repository is dedicated to storing and sharing code related to data science projects, Python programming, Python libraries, SQL queries, and other related content.
 

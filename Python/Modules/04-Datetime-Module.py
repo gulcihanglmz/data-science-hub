@@ -11,7 +11,7 @@ print(today.weekday())    #Return day of the week, where Monday == 0 ... Sunday 
 print(today.isoweekday()) #Return day of the week, where Monday == 1 ... Sunday == 7.
 #day,month,year -> attributes / weekday(),isoweekday() -> methods
 
-past_history = date(2000,12,16)
+past_history = date(1998,6,22)
 print(past_history)
 print(past_history.isoweekday())
 

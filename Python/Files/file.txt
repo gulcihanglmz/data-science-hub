@@ -1,0 +1,27 @@
+Mode	Description
+r	Opens a file for reading only. 
+
+r+	Opens a file for both reading and writing.
+
+w	Opens a file for writing only. If the file exists, it will be overwritten.
+If the file does not exist, a new file will be created for writing.
+
+w+	Opens a file for both writing and reading. If the file exists, it will 
+be overwritten. If the file does not exist, a new file will be created for reading 
+and writing.
+
+a	Opens a file for appending. If the file exists, the file pointer is placed 
+at the end of the file. If the file does not exist, a new file will be created for writing
+
+a+	Opens a file for both appending and reading. If the file exists, the file pointer 
+is placed at the end of the file. If the file does not exist, a new file will be created 
+for reading and writing.
+
+ab+	Opens a file for both appending and reading in binary mode. If the file exists, the 
+file pointer is placed at the end of the file. If the file does not exist, a new file 
+will be created for reading and writing.
+
+
+file.closed	Returns True if the file is closed, False otherwise.
+file.mode	Returns the mode in which the file was opened.
+file.name	Returns the file path and name.

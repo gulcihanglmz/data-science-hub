@@ -1,0 +1,5 @@
+r	Opens a file for reading only. 
+r+	Opens a file for both reading and writing.
+w	Opens a file for writing only
+w+	Opens a file for both writing and reading.
+a	Opens a file for appending

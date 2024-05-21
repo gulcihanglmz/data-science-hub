@@ -1,0 +1,35 @@
+import time
+#using decorators with return fonctions
+def cal_time(funct):
+    def wrappper(*args, **kwargs):
+        started = time.time()
+        result = funct(*args, **kwargs)
+        terminated = time.time()
+        print(f"The processing time is: {terminated-started}")
+        return result
+    return wrappper
+#return işlemi kullandığımızda ekrana yazmak istiyorsak bir değişkene atamalıyız ki kaybolmasın
+
+@cal_time
+def sqr(list):
+    result = []
+    for i in list:
+        result.append(i**2)
+    return result
+
+@cal_time
+def cube(list):
+    result = []
+    for i in list:
+        result.append(i**3)
+    return result
+
+@cal_time
+def summation(*args):
+    time.sleep(1)
+    return sum(*args)
+
+
+print(sqr(range(1000)))
+
+

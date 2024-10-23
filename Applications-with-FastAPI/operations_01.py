@@ -2,10 +2,9 @@
    http://127.0.0.1:8000/
 """ 
 
-from fastapi import FastAPI
 from pydantic import BaseModel
-
 class Employee(BaseModel):
+   
     employee_id: int
     employee_name: str
     employee_salary: int
@@ -15,7 +14,7 @@ app = FastAPI()
 employees = []
 
 @app.get("/")
-def fun():
+def root():
     return employees
 
 @app.get("/employee/")
@@ -26,6 +25,15 @@ def read_employee():
 def employee_create(new_employee : Employee):
     employees.append(new_employee)
     return new_employee
+
+
+@app.get("/employee/{employee_id}")
+def get_employee_by_id(employee_id: int):
+    for employee in employees:
+        if employee.employee_id == employee_id:
+            return employee
+    return {"detail": "Employee not found"}
+
 
 @app.put("/employee/{employee_id}")
 def update_employee(employee_id: int , updated_employee: Employee):
@@ -42,6 +50,7 @@ def delete_employee(employee_id : int):
             del employees[index]
             return {"Message" : "Employee deleted!"}
     return  {"Error" : "Employee not found!"}
+
 
 
 

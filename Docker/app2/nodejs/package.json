@@ -1,0 +1,12 @@
+{
+  "name": "docker-node-app",
+  "version": "1.0.0",
+  "description": "Simple Node.js server for Docker testing.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "4.17.1"
+  }
+}

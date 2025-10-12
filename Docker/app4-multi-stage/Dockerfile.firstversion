@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk-alpine 
+COPY source /usr/src/uygulama
+WORKDIR /usr/src/uygulama
+RUN javac uygulama.java   
+CMD ["java", "uygulama"]

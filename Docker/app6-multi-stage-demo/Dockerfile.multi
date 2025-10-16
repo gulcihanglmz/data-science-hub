@@ -1,0 +1,10 @@
+FROM openjdk:8-jdk-alpine AS firstbuilder
+WORKDIR /usr/src/uygulama 
+COPY source .
+RUN javac uygulama.java
+
+
+FROM openjdk:8-jre-alpine
+WORKDIR /uygulama
+COPY --from=firstbuilder /usr/src/uygulama/ .
+CMD [ "java" ,"uygulama"]

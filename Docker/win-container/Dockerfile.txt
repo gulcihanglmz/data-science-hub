@@ -1,0 +1,30 @@
+# escape=` 
+# alt satıra geçmek için \ kullanıyorduk fakat winde dosya için kullanılıyor bu yüzden ` kullanıyoruz
+
+# Base image: Windows Server Core 2019
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
+
+# Metadata - image maintainer information
+LABEL maintainer="jshelton@contoso.com"
+
+# Install IIS (Internet Information Services)
+RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
+
+# Create a simple "Hello World" page
+RUN echo "Hello World - Dockerfile" > C:\inetpub\wwwroot\index.html
+
+# Install Python 3.10 using PowerShell
+RUN powershell.exe -Command `
+    $ErrorActionPreference = 'Stop'; `
+    Write-Host 'Downloading Python...'; `
+    Invoke-WebRequest -Uri https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe -OutFile C:\python-3.10.11.exe; `
+    Write-Host 'Installing Python...'; `
+    Start-Process C:\python-3.10.11.exe -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1' -Wait; `
+    Write-Host 'Cleaning up...'; `
+    Remove-Item C:\python-3.10.11.exe -Force
+
+# Expose port 80 for web traffic (IIS)
+EXPOSE 80
+
+# Default command to run when the container starts
+CMD [ "cmd" ]
